@@ -19,7 +19,7 @@ Beyond basic installation, this case study details advanced infrastructure troub
 
 ## 🏗️ Lab Architecture & Network Topology
 The environment utilizes a routeable Bridged Network topology to ensure transparent network packet delivery and accurate host source-IP tracking across the logging pipeline.
-
+```text
 
        [ Windows 11 Host ]  ─────── (Manages UI Browser & Runs Attacks)
       (IP: 192.168.172.146)
