@@ -68,7 +68,7 @@ sudo systemctl start wazuh-agent
 
 
 
-Phase 2: Infrastructure Engineering & Storage Resolution
+🛑 Phase 2: Infrastructure Engineering & Storage Resolution
 1. Diagnosing Storage Watermark Freezes (OSError: [Errno 28])
 
 During infrastructure initialization, the wazuh-manager.service failed to start. Forcing the background process into the foreground (sudo /var/ossec/bin/wazuh-apid -f) revealed a fatal exception: OSError: [Errno 28] No space left on device.
@@ -86,7 +86,7 @@ sudo vgs
 sudo lvextend -l +100%FREE -r /dev/mapper/ubuntu--vg-ubuntu--lv
 
 
-Phase 3: Detection Engineering & Security Scenarios
+⚡ Phase 3: Detection Engineering & Security Scenarios
 Scenario 1: Automated SSH Brute-Force & Active Response Containment
 
 An aggressive SSH brute-force simulation loop was launched from the Windows Host machine terminal targeting the Ubuntu Linux Agent node:
