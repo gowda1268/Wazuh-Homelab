@@ -21,24 +21,36 @@ Beyond basic installation, this case study details advanced infrastructure troub
 The environment utilizes a routeable Bridged Network topology to ensure transparent network packet delivery and accurate host source-IP tracking across the logging pipeline.
 ```text
 
-       [ Windows 11 Host ]  ─────── (Manages UI Browser & Runs Attacks)
-      (IP: 192.168.172.146)
-                │
-                │ (Launches SSH Brute-Force Loop)
-                ▼
-  [ Ubuntu Linux Agent (Linux001) ] 
-     (Agent IP: 192.168.172.11)
-                │
-                │ (Ships Encrypted Telemetry via Port 1514)
-                ▼
-   [ Ubuntu Wazuh Manager  ]
-    (Manager IP: 192.168.172.65)
+       ## 🏗️ Lab Architecture & Network Topology
+
+The infrastructure is deployed within an isolated virtual network environment, utilizing a dedicated host-only adapter network to facilitate secure, out-of-band telemetry aggregation and threat simulation.
+
+
+               +----------------------------------------+
+               |          SIEM Management Node          |
+               |                                        |
+               |  OS: Ubuntu Server (Linux Manager)     |
+               |  IP Address: 192.168.120.65            |
+               +-------------------+--------------------+
+                                   |
+                                   | [Port 1514/1515: Encrypted Agent Telemetry]
+                                   |
+         +-------------------------+-------------------------+
+         |                                                   |
+         v                                                   v
++--------+-----------------------+                  +---------+---------------------+
+|        Target Host 01          |                  |        Target Host 02         |
+|                                |                  |                               |
+| OS: Ubuntu Desktop (Linux)     |                  | OS: Windows 11 Enterprise     |
+| Agent ID: 001                  |                  | Agent ID: 002                 |
+| Role: Attack Surface Endpoint  |                  | Role: Attack Surface Endpoint |
++--------------------------------+                  +-------------------------------+
 
 
 
 
 
-
+# 🪟 Phase 2: Windows Endpoint Monitoring & Compliance Hardening (Agent 002
 
 🚀 Phase 1: Distributed Installation Lifecycle
 1. Central Manager Provisioning
@@ -97,6 +109,9 @@ sudo lvextend -l +100%FREE -r /dev/mapper/ubuntu--vg-ubuntu--lv
 
 
 ⚡ Phase 3: Detection Engineering & Security Scenarios
+
+# 🪟 Phase 1 : Linux  Endpoint Monitoring 
+
 
 
 
@@ -219,6 +234,118 @@ To maintain resource-conscious lab operations and safely flush heavy simulation 
 
 
 curl -k -u "admin":"bxU*ZqDkate.UXM59rhJ0ZdvM.itbYI7" -X DELETE "https://localhost:9200/wazuh-alerts-*"
+
+
+
+# 🪟 Phase 2 : Windows Endpoint Monitoring
+
+
+### 3. Windows Agent (002) Deployment & Initialization
+
+To enroll the Windows 11 Enterprise host into the centralized SIEM cluster, an automated provisioning approach was utilized via an elevated terminal session.
+
+#### Automated Deployment Script
+Running the following command via an Administrative PowerShell terminal downloads the MSI package, configures the registration handshake parameters, and assigns the agent name dynamically:
+
+## powershell
+Invoke-WebRequest -Uri [https://packages.wazuh.com/4.x/windows/wazuh-agent-4.x.msi](https://packages.wazuh.com/4.x/windows/wazuh-agent-4.x.msi) -OutFile ${env:TEMP}\wazuh-agent.msi; Start-Process -FilePath msiexec.exe -ArgumentList "/i ${env:TEMP}\wazuh-agent.msi /q WAZUH_MANAGER='192.168.120.65' WAZUH_AGENT_NAME='WindowsAgent' WAZUH_REGISTRATION_SERVER='192.168.120.65'" -Wait
+
+
+Service Authorization
+
+Once the installer packages are local, the underlying agent execution service is registered and kicked off to begin processing data:
+
+
+PowerShell
+
+# Start the background monitoring daemon
+Start-Service -Name wazuh
+
+# Verify the service state is running cleanly
+Get-Service -Name wazuh
+
+
+🪟 Scenario 1: Automated Windows RDP Brute-Force & Account Lockout
+
+The Threat Vector: Brute-forcing the Remote Desktop Protocol (RDP) via exposed port 3389 is one of the most common external entry points for attackers targeting Windows environments.
+
+    The Attack Simulation: Run a rapid login loop from your Linux endpoint terminal (Linux001) targeting your Windows agent's IP address using crackmapexec or hydra:
+
+
+# Execute from your Linux Agent terminal
+hydra -l Administrator -P /usr/share/wordlists/fasttrack.txt rdp://<WINDOWS_AGENT_IP> -V
+
+(Alternatively, if you don't have those tools installed, just try to log into the Windows machine via RDP from any device and intentionally spam the wrong password 5–10 times rapidly).
+
+What Wazuh Detects: Wazuh monitors Windows Security Event ID 4625 (An account failed to log on). It will aggregate these rapid failures into a high-severity alert: "Wazuh: Multiple failed logins - Possible brute force attack."
+
+The Hardening Remediation: On your Windows Agent, open Local Security Policy (secpol.msc), navigate to Account Policies -> Account Lockout Policy, and set:
+
+    Account lockout threshold: 5 invalid logon attempts
+
+Verification Proof: Re-run the attack loop. The account will lock out immediately, triggering Windows Event ID 4740 (A user account was locked out), resulting in a high-severity Level 10 alert on your dashboard proving your protective controls worked.
+
+
+
+
+🪟 Scenario 2: Privilege Escalation via Windows Command Abuse (Whoami / Priv)
+
+The Threat Vector: Once an adversary gets an initial foothold on a Windows machine, the very first thing they do is execute enumeration commands to see what user privileges they have in order to plan an escalation to SYSTEM.
+
+    The Attack Simulation: Open a standard (non-administrative) Command Prompt on your Windows agent and type these high-frequency discovery commands:
+
+whoami /priv
+whoami /groups
+net localgroup administrators
+reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+
+
+
+What Wazuh Detects: By default, Wazuh tracks Windows Event ID 4688 (A new process has been created). It watches for suspicious command line arguments. It will raise alerts flagging "Windows: Shell commands execution" or mapping directly to MITRE ATT&CK T1033 (Discovery: System Owner/User Discovery).
+
+The Hardening Remediation: You can restrict non-admin access to command tools or ensure that command-line logging is fully audited via Group Policy (gpedit.msc) by enabling "Include command line in process creation events" under Computer Configuration -> Administrative Templates -> System -> Audit Process Creation. This ensures maximum visibility into corporate enumeration tactics.
+
+
+🪟 Scenario 3: Real-Time Windows Registry Tampering (FIM)
+
+The Threat Vector: Attackers often modify specific Windows Registry hives to establish persistent access (so their malware runs automatically every time the computer boots up).
+
+    The Attack Simulation: Open Registry Editor (regedit) or use Command Prompt to create a suspicious registry entry inside the classic Windows "Run" persistence key:
+
+reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Run" /v MaliciousPersistence /t REG_SZ /d "C:\Windows\System32\cmd.exe" /f
+
+What Wazuh Detects: Windows File Integrity Monitoring (FIM / Syscheck) monitors the registry keys out-of-the-box. The moment that key is added or modified, Wazuh flashes a high-severity alert: "Registry value added to a Run key", capturing the exact value string (cmd.exe).
+
+The Hardening Remediation: Clean up the threat by deleting the unauthorized key:
+
+
+reg delete "HKLM\Software\Microsoft\Windows\CurrentVersion\Run" /v MaliciousPersistence /f
+
+
+reg delete "HKLM\Software\Microsoft\Windows\CurrentVersion\Run" /v MaliciousPersistence /f
+
+Then, configure the Wazuh Agent’s local configuration file (ossec.conf) on Windows to track your registry monitoring parameters in strict realtime="yes" mode.
+
+
+Scenario 4: Attack Surface Minimization via CIS Benchmarks
+
+    Objective: Periodically audit endpoints against industry-standard configuration baselines to maintain strong system hardening practices.
+
+    Initial Assessment Baseline: The host machine initially achieved a defensive compliance score of 24%, flagging multiple configuration vulnerabilities defined by the CIS Microsoft Windows 11 Enterprise Benchmark v3.0.0.
+
+    Identified Vulnerability Gap: * Rule ID 26003: Ensure 'Minimum password length' is set to '14 or more character(s)' → Status: Failed.
+
+    Remediation Action Executed: An administrative configuration adjustment was programmatically applied to the system policy framework via the terminal interface:
+
+
+     net accounts /minpwlen:14
+
+
+SIEM Verification Outcome: Forced an on-demand configuration inventory re-scan. The Wazuh SCA sub-module successfully updated the database record, shifting the rule state to an active Passed configuration, reducing the local credential brute-forcing attack surface.
+
+
+
+
 
 
 
