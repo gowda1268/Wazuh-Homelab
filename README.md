@@ -31,7 +31,7 @@ The environment utilizes a routeable Bridged Network topology to ensure transpar
                 │
                 │ (Ships Encrypted Telemetry via Port 1514)
                 ▼
-   [ Ubuntu Wazuh Manager (x) ]
+   [ Ubuntu Wazuh Manager  ]
     (Manager IP: 192.168.172.65)
 
 
@@ -125,7 +125,7 @@ The pipeline successfully identified the high-frequency failure pattern originat
 The screenshot below displays the Wazuh Dashboard capturing the transition from individual low-severity authentication warnings to an aggregated, high-severity Level 10 alert. This demonstrates Wazuh's correlation engine recognizing the rapid-fire nature of the network brute-force attack originating from the Windows host.
 
 #### 📊 Attack & Containment Artifacts
-![Scenario 1 SSH Brute-Force](Images/Scenario%201%20Automated%20SSH%20Brute-Force%20%26%20Active%20R
+![Scenario 1 SSH Brute-Force](Images/Scenario%201%20Automated%20SSH%20Brute-Force%20%26%20Active%20Response%20Containment.png)
 
 
 
@@ -144,8 +144,7 @@ The screenshot below shows the raw telemetry ingested from the agent's system lo
 #### 📊 Privilege Escalation Artifacts
 ![Scenario 2 Sudo Abuse Baseline](Images/Scenario%202%20Host%20Privilege%20Escalation%20%28Sudo%20Abuse%29%5B1%5D.png)
 ![Scenario 2 Exploitation Proof](Images/Scenario%202%20Host%20Privilege%20Escalation%20%28Sudo%20Abuse%29%5B2%5D.png)
-![Scenario 2 Alert Verification](Images/Scenario%202%20Host%20Privilege%20Escalation%20%28Sudo%20Abuse%29
-
+![Scenario 2 Alert Verification](Images/Scenario%202%20Host%20Privilege%20Escalation%20%28Sudo%20Abuse%29%5B3%5D.png)
 
 
 Scenario 3: Local Account Tampering (File Integrity Monitoring)
@@ -164,8 +163,7 @@ The screenshot below captures the real-time File Integrity Monitoring dashboard 
 
 #### 📊 File Integrity Monitoring (FIM) Evidence
 ![Scenario 3 FIM Configuration](Images/Scenario%203%20Local%20Account%20Tampering%20%28File%20Integrity%20Monitoring%29%5B1%5D.png)
-![Scenario 3 Alert Dashboard](Images/Scenario%203%20Local%20Account%20Tampering%20%28File%20I
-
+![Scenario 3 Alert Dashboard](Images/Scenario%203%20Local%20Account%20Tampering%20%28File%20Integrity%20Monitoring%29%5B2%5D.png)
 
 
 Scenario 4: Continuous Vulnerability Assessment & System Hardening
@@ -178,6 +176,28 @@ To identify software weaknesses, the Vulnerability Detector was activated within
   <index-status>yes</index-status>
   <feed-update-interval>60m</feed-update-interval>
 </vulnerability-detection>
+
+🔍 Attack Surface & Risk Evaluation
+
+    Vulnerability Assessment: The updated Wazuh Vulnerability Detection module dynamically cross-references the software package inventory of the Ubuntu Agent (Linux001) against up-to-date vulnerability feeds to discover unpatched packages and system weaknesses.
+
+    Security Configuration Assessment (SCA): Continuous Center for Internet Security (CIS) benchmarks were executed locally on the agent node to identify misconfigurations, weak permissions, and compliance drifts.
+
+🛠️ Remediation Engineering & Hardening Execution
+
+To simulate a real-world hardening workflow, a critical finding regarding remote administrative access was manually remediated on the Ubuntu Agent VM. The SSH daemon configuration was hardened to eliminate direct root exposure:
+
+
+# Edit the SSH configuration file to disable root login
+sudo sed -i 's/^#PermitRootLogin.*/PermitRootLogin no/' /etc/ssh/sshd_config
+
+# Restart the SSH service to enforce the new security baseline
+sudo systemctl restart ssh
+
+
+Following the remediation, the Wazuh Agent service was cycled to push an immediate state re-inventory map back to the Manager for evaluation:
+
+sudo systemctl restart wazuh-agent
 
 
 
