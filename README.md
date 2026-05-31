@@ -83,9 +83,14 @@ sudo systemctl start wazuh-agent
 
 
 #### 📊 Agent Deployment Verification
-![Agent Deploy Step 1](Images/Linix-Agent-Deploy%5B1%5D.png)
-![Agent Deploy Step 2](Images/Linix-Agent-Deploy%5B2%5D.png)
-![Agent Deploy Step 3](Images/Linix-Agent-Deploy%5B3%5D.png)
+* **Initial Deployment Verification - Step 1:**
+  ![Agent Deploy Step 1](Images/Linux/Linix-Agent-Deploy%5B1%5D.png)
+
+* **Initial Deployment Verification - Step 2:**
+  ![Agent Deploy Step 2](Images/Linux/Linix-Agent-Deploy%5B2%5D.png)
+
+* **Initial Deployment Verification - Step 3:**
+  ![Agent Deploy Step 3](Images/Linux/Linix-Agent-Deploy%5B3%5D.png)
 
 
 
@@ -140,8 +145,8 @@ The pipeline successfully identified the high-frequency failure pattern originat
 The screenshot below displays the Wazuh Dashboard capturing the transition from individual low-severity authentication warnings to an aggregated, high-severity Level 10 alert. This demonstrates Wazuh's correlation engine recognizing the rapid-fire nature of the network brute-force attack originating from the Windows host.
 
 #### 📊 Attack & Containment Artifacts
-![Scenario 1 SSH Brute-Force](Images/Scenario%201%20Automated%20SSH%20Brute-Force%20%26%20Active%20Response%20Containment.png)
-
+* **Scenario 1: Automated SSH Brute-Force & Active Response Containment:**
+  ![Scenario 1 SSH Brute-Force](Images/Linux/Scenario%201%20Automated%20SSH%20Brute-Force%20%26%20Active%20Response%20Containment.png)
 
 
 Scenario 2: Host Privilege Escalation (Sudo Abuse)
@@ -157,9 +162,14 @@ The screenshot below shows the raw telemetry ingested from the agent's system lo
 
 
 #### 📊 Privilege Escalation Artifacts
-![Scenario 2 Sudo Abuse Baseline](Images/Scenario%202%20Host%20Privilege%20Escalation%20%28Sudo%20Abuse%29%5B1%5D.png)
-![Scenario 2 Exploitation Proof](Images/Scenario%202%20Host%20Privilege%20Escalation%20%28Sudo%20Abuse%29%5B2%5D.png)
-![Scenario 2 Alert Verification](Images/Scenario%202%20Host%20Privilege%20Escalation%20%28Sudo%20Abuse%29%5B3%5D.png)
+* **Scenario 2: Host Privilege Escalation (Sudo Abuse) Baseline:**
+  ![Scenario 2 Sudo Abuse Baseline](Images/Linux/Scenario%202%20Host%20Privilege%20Escalation%20%28Sudo%20Abuse%29%5B1%5D.png)
+
+* **Scenario 2: Exploitation Proof Tracking:**
+  ![Scenario 2 Exploitation Proof](Images/Linux/Scenario%202%20Host%20Privilege%20Escalation%20%28Sudo%20Abuse%29%5B2%5D.png)
+
+* **Scenario 2: Alert Severity Level 10 Verification:**
+  ![Scenario 2 Alert Verification](Images/Linux/Scenario%202%20Host%20Privilege%20Escalation%20%28Sudo%20Abuse%29%5B3%5D.png)
 
 
 Scenario 3: Local Account Tampering (File Integrity Monitoring)
@@ -177,8 +187,14 @@ The screenshot below captures the real-time File Integrity Monitoring dashboard 
 
 
 #### 📊 File Integrity Monitoring (FIM) Evidence
-![Scenario 3 FIM Configuration](Images/Scenario%203%20Local%20Account%20Tampering%20%28File%20Integrity%20Monitoring%29%5B1%5D.png)
-![Scenario 3 Alert Dashboard](Images/Scenario%203%20Local%20Account%20Tampering%20%28File%20Integrity%20Monitoring%29%5B2%5D.png)
+* **Scenario 3: File Integrity Monitoring (FIM) Configuration Hashing:**
+  ![Scenario 3 FIM Configuration](Images/Linux/Scenario%203%20Local%20Account%20Tampering%20%28File%20Integrity%20Monitoring%29%5B1%5D.png)
+
+* **Scenario 3: FIM Hacker Creation Live Dashboard Alert:**
+  ![Scenario 3 Alert Dashboard](Images/Linux/Scenario%203%20Local%20Account%20Tampering%20%28File%20Integrity%20Monitoring%29%5B2%5D.png)
+
+
+
 
 
 Scenario 4: Continuous Vulnerability Assessment & System Hardening
@@ -224,8 +240,17 @@ Additionally, Wazuh executed continuous Center for Internet Security (CIS) bench
 
 
 #### 📊 Vulnerability Posture & Compliance Card
-![Scenario 4 Vulnerability Dashboard](Images/Scenario%204%20Continuous%20Vulnerability%20Assessment%20%26%20System%20Hardening.png)
-![SSH Hardening Verification](Images/sshd.png)
+* **Scenario 4: Continuous Vulnerability Assessment & CVE Index:**
+  ![Scenario 4 Vulnerability Dashboard](Images/Linux/Scenario%204%20Continuous%20Vulnerability%20Assessment%20%26%20System%20Hardening.png)
+
+* **Scenario 4: CIS SSH Daemon Hardening Verification:**
+  ![SSH Hardening Verification](Images/Linux/sshd.png)
+
+
+* **Core CIS Baseline Verification Metric:**
+  ![CIS Benchmark Score](Images/Linux/CIS%20Benchmark.png)
+
+
 
 
 🧹 Phase 4: Database Maintenance & Baseline Cleanliness
@@ -265,6 +290,15 @@ Start-Service -Name wazuh
 Get-Service -Name wazuh
 
 
+**Windows Installation & Enrollment Handshake - Step 1:**
+  ![Win Agent Deploy 1](Images/Windows/WinodowsAgentDeploy%5B1%5D.png)
+
+* **Windows Installation & Enrollment Handshake - Step 2:**
+  ![Win Agent Deploy 2](Images/Windows/WinodowsAgentDeploy%5B2%5D.png)
+
+
+
+
 🪟 Scenario 1: Automated Windows RDP Brute-Force & Account Lockout
 
 The Threat Vector: Brute-forcing the Remote Desktop Protocol (RDP) via exposed port 3389 is one of the most common external entry points for attackers targeting Windows environments.
@@ -286,6 +320,18 @@ The Hardening Remediation: On your Windows Agent, open Local Security Policy (se
 Verification Proof: Re-run the attack loop. The account will lock out immediately, triggering Windows Event ID 4740 (A user account was locked out), resulting in a high-severity Level 10 alert on your dashboard proving your protective controls worked.
 
 
+* **Scenario 1: Automated Windows RDP Brute-Force Metric Capture - Capture 1:**
+  ![RDP Brute Force 1](Images/Windows/Scenario%201%20Automated%20Windows%20RDP%20Brute-Force%20%26%20Account%20Lockout%5B1%5D%20%281%29.png)
+
+* **Scenario 1: Automated Windows RDP Brute-Force Metric Capture - Capture 2:**
+  ![RDP Brute Force 2](Images/Windows/Scenario%201%20Automated%20Windows%20RDP%20Brute-Force%20%26%20Account%20Lockout%5B2%5D.png)
+
+* **Scenario 1: Automated Windows RDP Brute-Force Metric Capture - Capture 3:**
+  ![RDP Brute Force 3](Images/Windows/Scenario%201%20Automated%20Windows%20RDP%20Brute-Force%20%26%20Account%20Lockout%5B3%5D.png)
+
+
+
+
 
 
 🪟 Scenario 2: Privilege Escalation via Windows Command Abuse (Whoami / Priv)
@@ -304,6 +350,21 @@ reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
 What Wazuh Detects: By default, Wazuh tracks Windows Event ID 4688 (A new process has been created). It watches for suspicious command line arguments. It will raise alerts flagging "Windows: Shell commands execution" or mapping directly to MITRE ATT&CK T1033 (Discovery: System Owner/User Discovery).
 
 The Hardening Remediation: You can restrict non-admin access to command tools or ensure that command-line logging is fully audited via Group Policy (gpedit.msc) by enabling "Include command line in process creation events" under Computer Configuration -> Administrative Templates -> System -> Audit Process Creation. This ensures maximum visibility into corporate enumeration tactics.
+
+
+* **Scenario 2: Privilege Escalation via Windows Command Abuse (Whoami Priv Tracking) - Log 1:**
+  ![Command Abuse 1](Images/Windows/Scenario%202%20Privilege%20Escalation%20via%20Windows%20Command%20Abuse%20%28Whoami%20Priv%29%5B1%5D.png)
+
+* **Scenario 2: Privilege Escalation via Windows Command Abuse (Whoami Priv Tracking) - Log 2:**
+  ![Command Abuse 2](Images/Windows/Scenario%202%20Privilege%20Escalation%20via%20Windows%20Command%20Abuse%20%28Whoami%20Priv%29%5B2%5D.png)
+
+* **Scenario 2: Privilege Escalation via Windows Command Abuse (Whoami Priv Tracking) - Log 3:**
+  ![Command Abuse 3](Images/Windows/Scenario%202%20Privilege%20Escalation%20via%20Windows%20Command%20Abuse%20%28Whoami%20Priv%29%5B3%5D.png)
+
+* **Scenario 2: Privilege Escalation via Windows Command Abuse (Whoami Priv Tracking) - Log 4:**
+  ![Command Abuse 4](Images/Windows/Scenario%202%20Privilege%20Escalation%20via%20Windows%20Command%20Abuse%20%28Whoami%20Priv%29%5B4%5D.png)
+
+
 
 
 🪟 Scenario 3: Real-Time Windows Registry Tampering (FIM)
@@ -327,6 +388,14 @@ reg delete "HKLM\Software\Microsoft\Windows\CurrentVersion\Run" /v MaliciousPers
 Then, configure the Wazuh Agent’s local configuration file (ossec.conf) on Windows to track your registry monitoring parameters in strict realtime="yes" mode.
 
 
+* **Scenario 3: Real-Time Windows Registry Run-Key Modification (FIM Log 1):**
+  ![Registry Tampering 1](Images/Windows/Scenario%203%20Real-Time%20Windows%20Registry%20Tampering%20%28FIM%29%5B1%5D.png)
+
+* **Scenario 3: Real-Time Windows Registry Run-Key Modification (FIM Log 2):**
+  ![Registry Tampering 2](Images/Windows/Scenario%203%20Real-Time%20Windows%20Registry%20Tampering%20%28FIM%29%5B2%5D.png)
+
+
+
 🪟  Scenario 4: Windows Vulnerability Tracking & System Hardening (SCA)
 
     Objective: Periodically audit endpoints against industry-standard configuration baselines to maintain strong system hardening practices.
@@ -345,7 +414,11 @@ SIEM Verification Outcome: Forced an on-demand configuration inventory re-scan. 
 
 
 
+* **Scenario 4: Security Configuration Assessment (SCA Baseline Gaps):**
+  ![SCA Flaws Found](Images/Windows/Windows%20Vulnerability%20Tracking%20%26%20System%20Hardening%20%28SCA%29%5B1%5D.png)
 
+* **Scenario 4: Post-Remediation Verification (CIS Rule 26003 Shifted to Passed):**
+  ![SCA Hardening Success](Images/Windows/Windows%20Vulnerability%20Tracking%20%26%20System%20Hardening%20%28SCA%29%5B2%5D.png)
 
 
 
