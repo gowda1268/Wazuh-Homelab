@@ -47,6 +47,10 @@ The central orchestration node was stood up on an Ubuntu Server environment usin
 
 curl -sO [https://packages.wazuh.com/4.x/wazuh-install.sh](https://packages.wazuh.com/4.x/wazuh-install.sh) && sudo bash wazuh-install.sh -a
 
+#### 🌐 Wazuh Web Interface Overview
+![Wazuh Login Screen](Images/Wazuh-Login-Page.png)
+![Wazuh Home Dashboard](Images/Wazuh-HomePage.png)
+
 
 2. Linux Endpoint Enrollment (Linux001)
 
@@ -64,6 +68,12 @@ sudo apt-get update && WAZUH_MANAGER='192.168.172.65' sudo apt-get install wazuh
 sudo systemctl daemon-reload
 sudo systemctl enable wazuh-agent
 sudo systemctl start wazuh-agent
+
+
+#### 📊 Agent Deployment Verification
+![Agent Deploy Step 1](Images/Linix-Agent-Deploy%5B1%5D.png)
+![Agent Deploy Step 2](Images/Linix-Agent-Deploy%5B2%5D.png)
+![Agent Deploy Step 3](Images/Linix-Agent-Deploy%5B3%5D.png)
 
 
 
@@ -114,6 +124,9 @@ The pipeline successfully identified the high-frequency failure pattern originat
 
 The screenshot below displays the Wazuh Dashboard capturing the transition from individual low-severity authentication warnings to an aggregated, high-severity Level 10 alert. This demonstrates Wazuh's correlation engine recognizing the rapid-fire nature of the network brute-force attack originating from the Windows host.
 
+#### 📊 Attack & Containment Artifacts
+![Scenario 1 SSH Brute-Force](Images/Scenario%201%20Automated%20SSH%20Brute-Force%20%26%20Active%20R
+
 
 
 Scenario 2: Host Privilege Escalation (Sudo Abuse)
@@ -128,6 +141,10 @@ sudo -k && sudo ls /root
 The screenshot below shows the raw telemetry ingested from the agent's system logs. Wazuh successfully parsed the failed administrative tracking event, highlighted the precise user account (x2) executing the command, raised it to a Level 10 alert severity, and accurately mapped the event behavior to MITRE ATT&CK Technique T1548.003.
 
 
+#### 📊 Privilege Escalation Artifacts
+![Scenario 2 Sudo Abuse Baseline](Images/Scenario%202%20Host%20Privilege%20Escalation%20%28Sudo%20Abuse%29%5B1%5D.png)
+![Scenario 2 Exploitation Proof](Images/Scenario%202%20Host%20Privilege%20Escalation%20%28Sudo%20Abuse%29%5B2%5D.png)
+![Scenario 2 Alert Verification](Images/Scenario%202%20Host%20Privilege%20Escalation%20%28Sudo%20Abuse%29
 
 
 
@@ -144,6 +161,10 @@ sudo useradd hacker_test
 
 The screenshot below captures the real-time File Integrity Monitoring dashboard the moment the unauthorized local user account was created. It maps out the exact timestamps and highlights modifications made directly to the core security files (/etc/passwd and /etc/shadow).
 
+
+#### 📊 File Integrity Monitoring (FIM) Evidence
+![Scenario 3 FIM Configuration](Images/Scenario%203%20Local%20Account%20Tampering%20%28File%20Integrity%20Monitoring%29%5B1%5D.png)
+![Scenario 3 Alert Dashboard](Images/Scenario%203%20Local%20Account%20Tampering%20%28File%20I
 
 
 
@@ -165,6 +186,11 @@ To identify software weaknesses, the Vulnerability Detector was activated within
 The screenshots below provide the final state of the audited endpoint. The first highlights the automated vulnerability inventory index breaking down unpatched host packages by CVE severity. The second shows the Security Configuration Assessment (SCA) final compliance scorecard reflecting successful operating system hardening against CIS standards.
 
 Additionally, Wazuh executed continuous Center for Internet Security (CIS) benchmarks against the Ubuntu agent endpoint to evaluate compliance metrics. To demonstrate remediation engineering, the system was hardened manually by editing /etc/ssh/sshd_config, setting PermitRootLogin no, and executing sudo systemctl restart ssh. The subsequent audit reflected an immediate increase in compliance scores.
+
+
+#### 📊 Vulnerability Posture & Compliance Card
+![Scenario 4 Vulnerability Dashboard](Images/Scenario%204%20Continuous%20Vulnerability%20Assessment%20%26%20System%20Hardening.png)
+![SSH Hardening Verification](Images/sshd.png)
 
 
 🧹 Phase 4: Database Maintenance & Baseline Cleanliness
