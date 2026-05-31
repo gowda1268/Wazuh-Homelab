@@ -151,13 +151,14 @@ Scenario 4: Continuous Vulnerability Assessment & System Hardening
 
 To identify software weaknesses, the Vulnerability Detector was activated within the manager’s global configuration file:
 
-
-<vulnerability-detector>
+```xml
+<vulnerability-detection>
   <enabled>yes</enabled>
-  <vulnerability-provider>
-    <canonical enabled="yes"/>
-  </vulnerability-provider>
-</vulnerability-detector>
+  <index-status>yes</index-status>
+  <feed-update-interval>60m</feed-update-interval>
+</vulnerability-detection>
+
+
 
 📊 Vulnerability Inventory & Compliance Card
 
