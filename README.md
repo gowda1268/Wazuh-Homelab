@@ -262,8 +262,7 @@ curl -k -u "admin":"bxU*ZqDkate.UXM59rhJ0ZdvM.itbYI7" -X DELETE "https://localho
 
 
 
-# 🪟 Phase 2 : Windows Endpoint Monitoring
-
+🪟 Phase 4: Windows Endpoint Monitoring & Compliance Hardening (Agent 002)
 
 ### 3. Windows Agent (002) Deployment & Initialization
 
@@ -281,7 +280,6 @@ Service Authorization
 Once the installer packages are local, the underlying agent execution service is registered and kicked off to begin processing data:
 
 
-PowerShell
 
 # Start the background monitoring daemon
 Start-Service -Name wazuh
