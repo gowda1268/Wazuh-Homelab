@@ -327,7 +327,7 @@ reg delete "HKLM\Software\Microsoft\Windows\CurrentVersion\Run" /v MaliciousPers
 Then, configure the Wazuh Agent’s local configuration file (ossec.conf) on Windows to track your registry monitoring parameters in strict realtime="yes" mode.
 
 
-🪟  Scenario 4: Attack Surface Minimization via CIS Benchmarks
+🪟  Scenario 4: Windows Vulnerability Tracking & System Hardening (SCA)
 
     Objective: Periodically audit endpoints against industry-standard configuration baselines to maintain strong system hardening practices.
 
