@@ -269,7 +269,7 @@ Get-Service -Name wazuh
 
 The Threat Vector: Brute-forcing the Remote Desktop Protocol (RDP) via exposed port 3389 is one of the most common external entry points for attackers targeting Windows environments.
 
-    The Attack Simulation: Run a rapid login loop from your Linux endpoint terminal (Linux001) targeting your Windows agent's IP address using crackmapexec or hydra:
+ The Attack Simulation: Run a rapid login loop from your Linux endpoint terminal (Linux001) targeting your Windows agent's IP address using crackmapexec or hydra:
 
 
 # Execute from your Linux Agent terminal
@@ -327,18 +327,18 @@ reg delete "HKLM\Software\Microsoft\Windows\CurrentVersion\Run" /v MaliciousPers
 Then, configure the Wazuh Agent’s local configuration file (ossec.conf) on Windows to track your registry monitoring parameters in strict realtime="yes" mode.
 
 
-Scenario 4: Attack Surface Minimization via CIS Benchmarks
+🪟  Scenario 4: Attack Surface Minimization via CIS Benchmarks
 
     Objective: Periodically audit endpoints against industry-standard configuration baselines to maintain strong system hardening practices.
 
-    Initial Assessment Baseline: The host machine initially achieved a defensive compliance score of 24%, flagging multiple configuration vulnerabilities defined by the CIS Microsoft Windows 11 Enterprise Benchmark v3.0.0.
+    Initial Assessment Baseline: The host machine initially achieved a defensive compliance score of 24%, flagging multiple configuration vulnerabilities defined by the CIS Microsoft Windows 11   Enterprise Benchmark v3.0.0.
 
     Identified Vulnerability Gap: * Rule ID 26003: Ensure 'Minimum password length' is set to '14 or more character(s)' → Status: Failed.
 
     Remediation Action Executed: An administrative configuration adjustment was programmatically applied to the system policy framework via the terminal interface:
 
 
-     net accounts /minpwlen:14
+  net accounts /minpwlen:14
 
 
 SIEM Verification Outcome: Forced an on-demand configuration inventory re-scan. The Wazuh SCA sub-module successfully updated the database record, shifting the rule state to an active Passed configuration, reducing the local credential brute-forcing attack surface.
