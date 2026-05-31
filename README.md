@@ -87,6 +87,9 @@ sudo lvextend -l +100%FREE -r /dev/mapper/ubuntu--vg-ubuntu--lv
 
 
 ⚡ Phase 3: Detection Engineering & Security Scenarios
+
+
+
 Scenario 1: Automated SSH Brute-Force & Active Response Containment
 
 An aggressive SSH brute-force simulation loop was launched from the Windows Host machine terminal targeting the Ubuntu Linux Agent node:
@@ -110,6 +113,9 @@ The pipeline successfully identified the high-frequency failure pattern originat
 📊 Ingestion & Detection Verification
 
 The screenshot below displays the Wazuh Dashboard capturing the transition from individual low-severity authentication warnings to an aggregated, high-severity Level 10 alert. This demonstrates Wazuh's correlation engine recognizing the rapid-fire nature of the network brute-force attack originating from the Windows host.
+
+
+
 Scenario 2: Host Privilege Escalation (Sudo Abuse)
 
 To validate internal insider-threat tracking capabilities, an intentional privilege escalation attempt was simulated directly on the agent terminal by purposefully forcing high-severity administrative authorization failures via the sudo boundary:
@@ -120,6 +126,11 @@ sudo -k && sudo ls /root
 📊 Administrative Log Audit
 
 The screenshot below shows the raw telemetry ingested from the agent's system logs. Wazuh successfully parsed the failed administrative tracking event, highlighted the precise user account (x2) executing the command, raised it to a Level 10 alert severity, and accurately mapped the event behavior to MITRE ATT&CK Technique T1548.003.
+
+
+
+
+
 Scenario 3: Local Account Tampering (File Integrity Monitoring)
 
 To verify real-time monitoring of critical files, real-time tracking attributes were appended to the <syscheck> section inside the agent's ossec.conf:
@@ -132,6 +143,10 @@ sudo useradd hacker_test
 📊 FIM Real-Time Alert Analytics
 
 The screenshot below captures the real-time File Integrity Monitoring dashboard the moment the unauthorized local user account was created. It maps out the exact timestamps and highlights modifications made directly to the core security files (/etc/passwd and /etc/shadow).
+
+
+
+
 Scenario 4: Continuous Vulnerability Assessment & System Hardening
 
 To identify software weaknesses, the Vulnerability Detector was activated within the manager’s global configuration file:
