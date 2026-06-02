@@ -26,7 +26,7 @@ The infrastructure is deployed within an isolated virtual network environment, u
 
 ```
 
- ![Topology](Images/Topology/wazuh_homelab_topology_v3.svg))         
+ ![Topology](Images/Topology/wazuh_homelab_topology_v3.svg)   
    
 ```
 
