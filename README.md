@@ -95,6 +95,10 @@ sudo systemctl start wazuh-agent
 ![Agent Deploy Step 1](Images/Linux/Linux-Agent-Deploy[1].png)
 ![Agent Deploy Step 2](Images/Linux/Linux-Agent-Deploy[2].png)
 ![Agent Deploy Step 3](Images/Linux/Linux-Agent-Deploy[3].png)
+![Agent Deploy Step 3](Images/Linux/Linux-Agent-UP[1].png)
+![Agent Deploy Step 3](Images/Linux/Linux-Agent-UP[2].png)
+
+
 
 ---
 
