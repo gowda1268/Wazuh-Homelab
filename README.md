@@ -166,7 +166,7 @@ sudo -k && sudo ls /root
 
 #### 📊 Administrative Log Audit
 
-![Scenario 2 Sudo Abuse Baseline](scenario-2-sudo-abuse.png)
+![Scenario 2 Sudo Abuse Baseline](Images/Linux/scenario-2-sudo-abuse.png)
 ![Scenario 2 Exploitation Proof](Images/Linux/Scenario%202%20Host%20Privilege%20Escalation%20%28Sudo%20Abuse%29[2].png)
 ![Scenario 2 Alert Severity Level 10 Verification](Images/Linux/Scenario%202%20Host%20Privilege%20Escalation%20%28Sudo%20Abuse%29[3].png)
 
