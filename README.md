@@ -321,10 +321,10 @@ reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
 
 #### 📊 Command Abuse Log Artifacts
 
-![Command Abuse Log 1](Images/Windows/scenario-2-sudo-abuse-1.png)
-![Command Abuse Log 3](Images/Windows/scenario-2-sudo-abuse-3.png)
-![Command Abuse Log 4](Images/Windows/scenario-2-sudo-abuse-4.png)
-![Command Abuse Log 2](Images/Windows/scenario-2-sudo-abuse-2.png)
+![Command Abuse Log 1](Images/Windows/scenario-2-windows-priv-enum-1.png)
+![Command Abuse Log 3](Images/Windows/scenario-2-windows-priv-enum-3.png)
+![Command Abuse Log 4](Images/Windows/scenario-2-windows-priv-enum-4.png)
+![Command Abuse Log 2](Images/Windows/scenario-2-windows-priv-enum-2.png)
 
 
 ---
