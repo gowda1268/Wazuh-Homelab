@@ -344,6 +344,10 @@ Then configure `ossec.conf` on the Windows agent to monitor registry keys in `re
 ![Registry Tampering FIM Log 1](Images/Windows/Scenario%203%20Real-Time%20Windows%20Registry%20Tampering%20%28FIM%29[1].png)
 ![Registry Tampering FIM Log 2](Images/Windows/Scenario%203%20Real-Time%20Windows%20Registry%20Tampering%20%28FIM%29[2].png)
 
+
+
+
+
 ---
 
 ### 🪟 Scenario 4: Windows Vulnerability Tracking & System Hardening (SCA)
