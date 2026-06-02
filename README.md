@@ -25,7 +25,8 @@ The infrastructure is deployed within an isolated virtual network environment, u
 
 
 ```
-   <img width="1440" height="1160" alt="image" src="https://github.com/user-attachments/assets/3c7a9f87-8fc8-4e62-ba3e-23883ab7578e" />
+
+    ![Topology](Wazuh-Homelab/Images/Topology/wazuh_homelab_topology_v3.svg)
             
    
 ```
