@@ -372,7 +372,9 @@ net accounts /minpwlen:14
 
 
 
+## 🤖 Acknowledgements
 
+Documentation and diagram assistance provided by [Claude](https://claude.ai) (Anthropic).
 
 
 
