@@ -299,6 +299,10 @@ hydra -l Administrator -P /usr/share/wordlists/fasttrack.txt rdp://<WINDOWS_AGEN
 ![RDP Brute Force 2](Images/Windows/Scenario%201%20Automated%20Windows%20RDP%20Brute-Force%20%26%20Account%20Lockout[2].png)
 ![RDP Brute Force 3](Images/Windows/Scenario%201%20Automated%20Windows%20RDP%20Brute-Force%20%26%20Account%20Lockout[3].png)
 
+
+
+
+
 ---
 
 ### 🪟 Scenario 2: Privilege Escalation via Windows Command Abuse (Whoami / Priv)
@@ -320,10 +324,10 @@ reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
 
 #### 📊 Command Abuse Log Artifacts
 
-![Command Abuse Log 1](Images/Windows/Scenario%202%20Privilege%20Escalation%20via%20Windows%20Command%20Abuse%20%28Whoami%20Priv%29%5B1%5D.png)
-![Command Abuse Log 2](Images/Windows/Scenario%202%20Privilege%20Escalation%20via%20Windows%20Command%20Abuse%20%28Whoami%20Priv%29%5B2%5D%20%281%29.png)
-![Command Abuse Log 3](Images/Windows/Scenario%202%20Privilege%20Escalation%20via%20Windows%20Command%20Abuse%20%28Whoami%20Priv%29%5B3%5D%20%281%29.png)
-![Command Abuse Log 4](Images/Windows/Scenario%202%20Privilege%20Escalation%20via%20Windows%20Command%20Abuse%20%28Whoami%20Priv%29%5B4%5D.png)
+![Command Abuse Log 1](Images/Windows/scenario-2-sudo-abuse-1.png)
+![Command Abuse Log 2](Images/Windows/scenario-2-sudo-abuse-2.png)
+![Command Abuse Log 3](Images/Windows/scenario-2-sudo-abuse-3.png)
+![Command Abuse Log 4](Images/Windows/scenario-2-sudo-abuse-4.png)
 
 ---
 
