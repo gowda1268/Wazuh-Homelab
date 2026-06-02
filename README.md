@@ -276,6 +276,9 @@ Get-Service -Name wazuh
 
 ![Win Agent Deploy 1](Images/Windows/WinodowsAgentDeploy[1].png)
 ![Win Agent Deploy 2](Images/Windows/WinodowsAgentDeploy[2].png)
+![Agent Deploy Step 3](Images/Windows/Windows-Agent-UP[1].png)
+![Agent Deploy Step 3](Images/Windows/Windows-Agent-UP[2].png)
+
 
 ---
 
