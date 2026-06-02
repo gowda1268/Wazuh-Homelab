@@ -241,6 +241,7 @@ curl -k -u "admin":"<password>" -X DELETE "https://localhost:9200/wazuh-alerts-*
 
 <br>
 <br>
+<br>
 
 
 ---
