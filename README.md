@@ -95,8 +95,8 @@ sudo systemctl start wazuh-agent
 ![Agent Deploy Step 1](Images/Linux/Linux-Agent-Deploy[1].png)
 ![Agent Deploy Step 2](Images/Linux/Linux-Agent-Deploy[2].png)
 ![Agent Deploy Step 3](Images/Linux/Linux-Agent-Deploy[3].png)
-![Agent Deploy Step 3](Images/Linux/Linux-Agent-UP[1].png)
-![Agent Deploy Step 3](Images/Linux/Linux-Agent-UP[2].png)
+![Agent Deploy Step 4](Images/Linux/Linux-Agent-UP[1].png)
+![Agent Deploy Step 5](Images/Linux/Linux-Agent-UP[2].png)
 
 
 
@@ -277,7 +277,7 @@ Get-Service -Name wazuh
 ![Win Agent Deploy 1](Images/Windows/WinodowsAgentDeploy[1].png)
 ![Win Agent Deploy 2](Images/Windows/WinodowsAgentDeploy[2].png)
 ![Agent Deploy Step 3](Images/Windows/Windows-Agent-UP[1].png)
-![Agent Deploy Step 3](Images/Windows/Windows-Agent-UP[2].png)
+![Agent Deploy Step 4](Images/Windows/Windows-Agent-UP[2].png)
 
 
 ---
