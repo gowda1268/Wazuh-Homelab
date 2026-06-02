@@ -25,27 +25,9 @@ The infrastructure is deployed within an isolated virtual network environment, u
 
 
 ```
-                    +------------------------------------------+
-                    |          SIEM Management Node            |
-                    |                                          |
-                    |   OS : Ubuntu Server (Linux Manager)     |
-                    |   IP : 192.168.120.65                    |
-                    +-------------------+----------------------+
-                                        |
-                                        |  Port 1514/1515
-                                        |  Encrypted Agent Telemetry
-                                        |
-                   +--------------------+--------------------+
-                   |                                         |
-                   v                                         v
-    +--------------+--------------+         +--------------+--------------+
-    |       Target Host 01        |         |       Target Host 02        |
-    |                             |         |                             |
-    |  OS   : Ubuntu Desktop      |         |  OS   : Windows 11          |
-    |  ID   : Agent 001           |         |  ID   : Agent 002           |
-    |  Role : Attack Surface      |         |  Role : Attack Surface      |
-    |         Endpoint            |         |         Endpoint            |
-    +-----------------------------+         +-----------------------------+
+   <img width="1440" height="1160" alt="image" src="https://github.com/user-attachments/assets/3c7a9f87-8fc8-4e62-ba3e-23883ab7578e" />
+            
+   
 ```
 
 
