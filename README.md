@@ -24,11 +24,11 @@ Beyond basic installation, this case study details advanced infrastructure troub
 The infrastructure is deployed within an isolated virtual network environment, utilizing a dedicated host-only adapter network to facilitate secure, out-of-band telemetry aggregation and threat simulation.
 
 
-```
+
 
 ![Topology](Images/Topology/wazuh_homelab_topology_v3.svg) 
    
-```
+
 
 
 
