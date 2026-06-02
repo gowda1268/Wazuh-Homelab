@@ -2,7 +2,9 @@
 
 ## 📌 Project Overview
 
-This project documents the end-to-end engineering, deployment, and optimization of an enterprise-grade Wazuh SIEM/XDR telemetry pipeline across a distributed multi-OS network. The laboratory environment features a central Wazuh Manager orchestration node built on Ubuntu Server, capturing and analyzing endpoint security telemetry from two dedicated agent nodes — **Linux001** (Ubuntu Desktop VM) and **WindowsAgent** (Windows 11 VM) — stress-tested using a physical Windows 11 host as the external attacker profile.
+This project documents the end-to-end engineering, deployment, and optimization of an enterprise-grade Wazuh SIEM/XDR telemetry pipeline across a distributed multi-OS network. The laboratory environment features a central Wazuh Manager orchestration node built on Ubuntu Server, capturing and analyzing endpoint security telemetry from two dedicated agent nodes — **Linux001** (Ubuntu Server VM) and **WindowsAgent** (Windows 11 VM) — stress-tested using a physical Windows 11 host as the external attacker profile.
+
+
 
 
 The entire detection array was managed, monitored, and stress-tested using a physical Windows 11 host system acting as both the primary administrative Control Center and the external network attacker profile.
