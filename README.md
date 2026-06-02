@@ -24,26 +24,29 @@ Beyond basic installation, this case study details advanced infrastructure troub
 The infrastructure is deployed within an isolated virtual network environment, utilizing a dedicated host-only adapter network to facilitate secure, out-of-band telemetry aggregation and threat simulation.
 
 
-
-+----------------------------------------+
-   |          SIEM Management Node          |
-   |                                        |
-   |  OS: Ubuntu Server (Linux Manager)     |
-   |  IP Address: 192.168.120.65            |
-   +-------------------+--------------------+
-                       |
-                       | [Port 1514/1515: Encrypted Agent Telemetry]
-                       |
- +---------------------+---------------------+
- |                                           |
- v                                           v
-+----+---------------------------+    +----------+--------------------+
-|     Target Host 01             |    |     Target Host 02            |
-|                                |    |                               |
-| OS: Ubuntu Desktop (Linux)     |    | OS: Windows 11 Enterprise     |
-| Agent ID: 001                  |    | Agent ID: 002                 |
-| Role: Attack Surface Endpoint  |    | Role: Attack Surface Endpoint |
-+--------------------------------+    +-------------------------------+
+```
+                    +------------------------------------------+
+                    |          SIEM Management Node            |
+                    |                                          |
+                    |   OS : Ubuntu Server (Linux Manager)     |
+                    |   IP : 192.168.120.65                    |
+                    +-------------------+----------------------+
+                                        |
+                                        |  Port 1514/1515
+                                        |  Encrypted Agent Telemetry
+                                        |
+                   +--------------------+--------------------+
+                   |                                         |
+                   v                                         v
+    +--------------+--------------+         +--------------+--------------+
+    |       Target Host 01        |         |       Target Host 02        |
+    |                             |         |                             |
+    |  OS   : Ubuntu Desktop      |         |  OS   : Windows 11          |
+    |  ID   : Agent 001           |         |  ID   : Agent 002           |
+    |  Role : Attack Surface      |         |  Role : Attack Surface      |
+    |         Endpoint            |         |         Endpoint            |
+    +-----------------------------+         +-----------------------------+
+```
 
 
 
