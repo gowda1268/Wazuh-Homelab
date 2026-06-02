@@ -239,6 +239,17 @@ To maintain resource-conscious lab operations and safely flush heavy simulation 
 curl -k -u "admin":"<password>" -X DELETE "https://localhost:9200/wazuh-alerts-*"
 ```
 
+
+
+
+
+
+
+
+
+
+
+
 ---
 
 ## 🪟 Phase 5: Windows Endpoint Monitoring & Compliance Hardening (Agent 002)
