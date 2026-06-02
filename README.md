@@ -2,7 +2,8 @@
 
 ## 📌 Project Overview
 
-This project documents the end-to-end engineering, deployment, and optimization of an enterprise-grade Wazuh SIEM/XDR telemetry pipeline across a distributed network. The laboratory environment features a central Wazuh Manager orchestration node built on Ubuntu Server, capturing and analyzing endpoint security data from a dedicated Ubuntu Server Agent node.
+This project documents the end-to-end engineering, deployment, and optimization of an enterprise-grade Wazuh SIEM/XDR telemetry pipeline across a distributed multi-OS network. The laboratory environment features a central Wazuh Manager orchestration node built on Ubuntu Server, capturing and analyzing endpoint security telemetry from two dedicated agent nodes — **Linux001** (Ubuntu Desktop VM) and **WindowsAgent** (Windows 11 VM) — stress-tested using a physical Windows 11 host as the external attacker profile.
+
 
 The entire detection array was managed, monitored, and stress-tested using a physical Windows 11 host system acting as both the primary administrative Control Center and the external network attacker profile.
 
@@ -24,15 +25,8 @@ Beyond basic installation, this case study details advanced infrastructure troub
 The infrastructure is deployed within an isolated virtual network environment, utilizing a dedicated host-only adapter network to facilitate secure, out-of-band telemetry aggregation and threat simulation.
 
 
-
-
 ![Topology](Images/Topology/wazuh_homelab_topology_v3.svg) 
    
-
-
-
-
-
 ---
 
 ## 🚀 Phase 1: Distributed Installation Lifecycle
@@ -79,8 +73,6 @@ sudo systemctl start wazuh-agent
 ![Agent Deploy Step 3](Images/Linux/Linux-Agent-Deploy[3].png)
 ![Agent Deploy Step 4](Images/Linux/Linux-Agent-UP[1].png)
 ![Agent Deploy Step 5](Images/Linux/Linux-Agent-UP[2].png)
-
-
 
 ---
 
@@ -234,7 +226,7 @@ curl -k -u "admin":"<password>" -X DELETE "https://localhost:9200/wazuh-alerts-*
 
 ## 🪟 Phase 5: Windows Endpoint Monitoring & Compliance Hardening (Agent 002)
 
-### 3. Windows Agent (002) Deployment & Initialization
+###  Windows Agent (002) Deployment & Initialization
 
 To enroll the Windows 11 Enterprise host into the centralized SIEM cluster, an automated provisioning approach was utilized via an elevated terminal session.
 
@@ -261,7 +253,6 @@ Get-Service -Name wazuh
 ![Agent Deploy Step 3](Images/Windows/Windows-Agent-UP[1].png)
 ![Agent Deploy Step 4](Images/Windows/Windows-Agent-UP[2].png)
 
-
 ---
 
 ### 🪟 Scenario 1: Automated Windows RDP Brute-Force & Account Lockout
@@ -284,10 +275,6 @@ hydra -l Administrator -P /usr/share/wordlists/fasttrack.txt rdp://<WINDOWS_AGEN
 ![RDP Brute Force 1](Images/Windows/Scenario%201%20Automated%20Windows%20RDP%20Brute-Force%20%26%20Account%20Lockout[1]%20(1).png)
 ![RDP Brute Force 2](Images/Windows/Scenario%201%20Automated%20Windows%20RDP%20Brute-Force%20%26%20Account%20Lockout[2].png)
 ![RDP Brute Force 3](Images/Windows/Scenario%201%20Automated%20Windows%20RDP%20Brute-Force%20%26%20Account%20Lockout[3].png)
-
-
-
-
 
 ---
 
@@ -343,10 +330,6 @@ Then configure `ossec.conf` on the Windows agent to monitor registry keys in `re
 ![Registry Tampering FIM Log 1](Images/Windows/Scenario%203%20Real-Time%20Windows%20Registry%20Tampering%20%28FIM%29[1].png)
 ![Registry Tampering FIM Log 2](Images/Windows/Scenario%203%20Real-Time%20Windows%20Registry%20Tampering%20%28FIM%29[2].png)
 
-
-
-
-
 ---
 
 ### 🪟 Scenario 4: Windows Vulnerability Tracking & System Hardening (SCA)
@@ -369,7 +352,6 @@ net accounts /minpwlen:14
 
 ![SCA Baseline Gaps](Images/Windows/Windows%20Vulnerability%20Tracking%20%26%20System%20Hardening%20%28SCA%29[1].png)
 ![Post-Remediation CIS Rule 26003 Passed](Images/Windows/Windows%20Vulnerability%20Tracking%20%26%20System%20Hardening%20%28SCA%29[2].png)
-
 
 
 ## 🤖 Acknowledgements
