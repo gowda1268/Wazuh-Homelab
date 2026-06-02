@@ -320,10 +320,10 @@ reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
 
 #### 📊 Command Abuse Log Artifacts
 
-![Command Abuse Log 1](Images/Windows/Scenario%202%20Privilege%20Escalation%20via%20Windows%20Command%20Abuse%20%28Whoami%20Priv%29[1].png)
-![Command Abuse Log 2](Images/Windows/Scenario%202%20Privilege%20Escalation%20via%20Windows%20Command%20Abuse%20%28Whoami%20Priv%29[2].png)
-![Command Abuse Log 3](Images/Windows/Scenario%202%20Privilege%20Escalation%20via%20Windows%20Command%20Abuse%20%28Whoami%20Priv%29[3].png)
-![Command Abuse Log 4](Images/Windows/Scenario%202%20Privilege%20Escalation%20via%20Windows%20Command%20Abuse%20%28Whoami%20Priv%29[4].png)
+![Command Abuse Log 1](Images/Windows/Scenario%202%20Privilege%20Escalation%20via%20Windows%20Command%20Abuse%20%28Whoami%20Priv%29%5B1%5D.png)
+![Command Abuse Log 2](Images/Windows/Scenario%202%20Privilege%20Escalation%20via%20Windows%20Command%20Abuse%20%28Whoami%20Priv%29%5B2%5D%20%281%29.png)
+![Command Abuse Log 3](Images/Windows/Scenario%202%20Privilege%20Escalation%20via%20Windows%20Command%20Abuse%20%28Whoami%20Priv%29%5B3%5D%20%281%29.png)
+![Command Abuse Log 4](Images/Windows/Scenario%202%20Privilege%20Escalation%20via%20Windows%20Command%20Abuse%20%28Whoami%20Priv%29%5B4%5D.png)
 
 ---
 
